@@ -1,5 +1,5 @@
-dwm
-dwm.o
+gaticonDwm/dwm
+*.o
 #Ignorar archivos de pyinstaller
 dist/
 build/
