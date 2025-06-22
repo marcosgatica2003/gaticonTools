@@ -18,10 +18,10 @@ int main() {
     if (blockButton != NULL) {
         click(atoi(blockButton));
     }
-    if ( estaMuteado() ) { printf("OFF\n"); }
+    if ( estaMuteado() ) { printf("^b#83a598^^c#222222^  OFF ^d^"); }
     else {
         getVolumen(volume, MAX_BUF_SIZE);
-        printf("%s\n", volume);
+        printf("^b#83a598^^c#222222^    %s ^d^", volume);
     }
     return 0;
 }

@@ -1,5 +1,3 @@
-/* Yael estuvo aquí */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,7 +20,7 @@ int main() {
     fscanf(archivoCapacidad, "%d", &capacidad);
     fscanf(archivoEstado, "%31s", estado);
     fclose(archivoCapacidad); fclose(archivoEstado);
-    ( strcmp(estado, "Charging") == 0 ) ? printf("⚡%d%%\n",capacidad) : printf("%d%%\n", capacidad);
+    ( strcmp(estado, "Charging") == 0 ) ? printf("^c#222222^^b#d79921^  ⚡%d%% ^d^",capacidad) : printf("^c#222222^^b#8ec07c^   %d%% ^d^", capacidad);
 
     return 0;
 }
