@@ -116,7 +116,7 @@ void setupsignals()
 
 }
 
-#define MARGIN "^c#222222^--^d^"
+#define MARGIN "^c#222222^-^d^"
 
 int getstatus(char *str, char *last)
 {
