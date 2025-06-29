@@ -90,6 +90,7 @@ static const char *dmenucmd[] = { "/home/marcosgatica/.config/rofi/configuracion
 static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
 static const char *capturadorPantalla[] = { "/home/marcosgatica/Repositorios/gaticonTools/capturadorDePantallas/capturarPantallaX11.sh", NULL};
 static const char *temperaturasConRofi[] = { "/home/marcosgatica/.config/rofi/temperaturas.sh", NULL };
+static const char *tabbedScript[] = { "/home/marcosgatica/.config/utilidadesYSistema/scripts/toggleTabbed.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -100,6 +101,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Right,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,      focusstack,     {.i = -1 } },
     { MODKEY,                       XK_w,       setlayout,      {.v = &layouts[1]}},
+    { MODKEY|ShiftMask,             XK_w,      spawn,          { .v = tabbedScript }},
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
