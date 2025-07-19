@@ -86,7 +86,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "/home/marcosgatica/.config/rofi/configuracionesRofi/abrirRofi.sh", NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
 static const char *capturadorPantalla[] = { "/home/marcosgatica/Repositorios/gaticonTools/capturadorDePantallas/capturarPantallaX11.sh", NULL};
 static const char *temperaturasConRofi[] = { "/home/marcosgatica/.config/rofi/temperaturas.sh", NULL };
