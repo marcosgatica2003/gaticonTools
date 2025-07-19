@@ -13,13 +13,13 @@ static const unsigned int gappov =  8;
 static int smartgaps = 0;
 static const char *fonts[]          = { "JetBrainsMonoNerdFont-9:bold" };
 
-static const char col_fg_norm[]     = "#dfdfdf"; 
-static const char col_bg_norm[]     = "#222222";
-static const char col_border_norm[] = "#222222";
+static const char col_fg_norm[]     = "#928374"; 
+static const char col_bg_norm[]     = "#282828";
+static const char col_border_norm[] = "#282828";
 
-static const char col_fg_sel[]      = "#000000";
-static const char col_bg_sel[]      = "#ff4040";
-static const char col_border_sel[]  = "#ff4040";
+static const char col_fg_sel[]      = "#ebdbb2";
+static const char col_bg_sel[]      = "#282828";
+static const char col_border_sel[]  = "#ebdbb2";
 
 static const char col_urgent[]      = "#f0c674";
 static const char col_black[]       = "#000000";
