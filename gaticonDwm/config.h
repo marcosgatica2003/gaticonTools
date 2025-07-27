@@ -11,7 +11,7 @@ static const unsigned int gappiv =  8;
 static const unsigned int gappoh =  8;
 static const unsigned int gappov =  8;
 static int smartgaps = 0;
-static const char *fonts[]          = { "JetBrainsMonoNerdFont-9:bold" };
+static const char *fonts[]          = { "Terminus (TTF)-9:bold" };
 
 static const char col_fg_norm[]     = "#928374"; 
 static const char col_bg_norm[]     = "#282828";
@@ -88,7 +88,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
-static const char *capturadorPantalla[] = { "/home/marcosgatica/Repositorios/gaticonTools/capturadorDePantallas/capturarPantallaX11.sh", NULL};
+static const char *capturadorPantalla[] = { "/home/marcosgatica/.local/bin/gaticonCaptureX11", NULL};
 static const char *temperaturasConRofi[] = { "/home/marcosgatica/.config/rofi/temperaturas.sh", NULL };
 static const char *tabbedScript[] = { "/home/marcosgatica/.config/utilidadesYSistema/scripts/toggleTabbed.sh", NULL };
 
