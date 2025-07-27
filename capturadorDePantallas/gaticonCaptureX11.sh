@@ -13,9 +13,9 @@ function warn()    { echo -e "${ORANGE}[!] $1${RESET}"; }
 function error()   { echo -e "${RED}[✗] $1${RESET}"; }
 
 function instalar {
-    cat /home/marcosgatica/Repositorios/gaticonTools/capturadorDePantallas/gaticonCaptureX11.sh > /usr/local/bin/gaticonCaptureX11
-    $PRIV chmod +x /usr/local/bin/gaticonCaptureX11
-    ok "Script copiado a /usr/local/bin"
+    cat ~/Repositorios/gaticonTools/capturadorDePantallas/gaticonCaptureX11.sh > ~/.local/bin/gaticonCaptureX11
+    $PRIV chmod +x ~/.local/bin/gaticonCaptureX11
+    ok "Script copiado a ~/.local/bin"
 }
 
 if [[ "$1" == "--help" ]]; then
@@ -26,10 +26,6 @@ if [[ "$1" == "--help" ]]; then
 fi
 
 if [[ "$1" == "--install" ]]; then
-    if [ $(id -u) -ne 0 ]; then 
-        echo "Sos un boludo! mete superusuario nomás."
-        exit 0
-    fi
     instalar
     exit 0
 fi
