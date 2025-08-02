@@ -4,3 +4,4 @@ gaticonDwm/dwm
 dist/
 build/
 *.spec
+*.rej

@@ -84,21 +84,21 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "/usr/local/bin/dmenu_run", NULL };
-static const char *termcmd[]  = { "/usr/local/bin/st", "-e", "/bin/tmux", NULL };
+static const char *termcmd[]  = { "/usr/local/bin/st", NULL };
 static const char *capturadorPantalla[] = { "/home/marcosgatica/.local/bin/gaticonCaptureX11", NULL};
 static const char *temperaturasConRofi[] = { "/home/marcosgatica/.config/rofi/temperaturas.sh", NULL };
 static const char *tabbedScript[] = { "/home/marcosgatica/.config/utilidadesYSistema/scripts/toggleTabbed.sh", NULL };
+static const char *traycmd[] = { "/home/marcosgatica/.config/dwmblocks/scripts/trayerControl.sh", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+    { MODKEY,                       XK_s,       togglesticky,   {0} },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+    { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = traycmd} },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_c,       spawn,          {.v = capturadorPantalla}},
     { MODKEY,                       XK_t,       spawn,          {.v = temperaturasConRofi}},
