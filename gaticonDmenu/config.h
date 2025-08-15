@@ -9,7 +9,7 @@ static const char *fonts[] = {
 static const char *prompt      = "ABRIR";      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#282828" },
+	[SchemeNorm] = { "#bbbbbb", "#000000" },
 	[SchemeSel] = { "#282828", "#8ec07c" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
