@@ -94,7 +94,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 static const char *colorname[] = {
     /* 8 normal colors */
-    [0] = "#000000", /* background (antes #282828) */
+    [0] = "#222222",
     [1] = "#cc241d", /* red     */
     [2] = "#98971a", /* green   */
     [3] = "#d79921", /* yellow  */
