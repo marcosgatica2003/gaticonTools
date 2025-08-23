@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BAR_HEIGHT 24
+#define BAR_HEIGHT 18
 
 /* appearance */
 /* #include <cstddef> */
@@ -13,14 +13,14 @@ static const unsigned int gappiv =  8;
 static const unsigned int gappoh =  8;
 static const unsigned int gappov =  8;
 static int smartgaps = 0;
-static const char *fonts[]          = { "monospace-11:bold" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font-10:bold" };
 
 static const char col_fg_norm[]     = "#928374"; 
-static const char col_bg_norm[]     = "#282828";
-static const char col_border_norm[] = "#282828";
+static const char col_bg_norm[]     = "#222222";
+static const char col_border_norm[] = "#222222";
 
 static const char col_fg_sel[]      = "#ebdbb2";
-static const char col_bg_sel[]      = "#282828";
+static const char col_bg_sel[]      = "#222222";
 static const char col_border_sel[]  = "#ebdbb2";
 
 static const char col_urgent[]      = "#f0c674";
@@ -41,9 +41,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	/* { "Gimp",     NULL,       NULL,       0,            1,           -1 }, */
+	{ "feh",     NULL,       NULL,       0,            1,           -1 },
+	{ "mpv",     NULL,       NULL,       0,            1,           -1 },
+	{ "mplayer",     NULL,       NULL,       0,            1,           -1 },
 	/* { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, */
-    { "Plank", "plank", NULL, ~0, 1, -1 },
+    /* { "Plank", "plank", NULL, ~0, 1, -1 }, */
 };
 
 /* layout(s) */
@@ -87,21 +89,21 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "/usr/local/bin/dmenu_run", NULL };
-static const char *termcmd[]  = { "/usr/local/bin/st", NULL };
-static const char *capturadorPantalla[] = { "/home/marcosgatica/.local/bin/gaticonCaptureX11", NULL};
-static const char *temperaturasConRofi[] = { "/home/marcosgatica/.config/rofi/temperaturas.sh", NULL };
+static const char *termcmd[]  = { "/usr/local/bin/st","-e", "/bin/tmux", NULL };
+static const char *capturadorPantalla[] = { "/home/marcosgatica/Repositorios/gaticonTools/capturadorDePantallas/gaticonCaptureX11", NULL};
+/* static const char *temperaturasConRofi[] = { "/home/marcosgatica/.config/rofi/temperaturas.sh", NULL }; */
 static const char *tabbedScript[] = { "/home/marcosgatica/.config/utilidadesYSistema/scripts/toggleTabbed.sh", NULL };
-static const char *traycmd[] = { "/home/marcosgatica/.config/dwmblocks/scripts/trayerControl.sh", NULL };
+/* static const char *traycmd[] = { "/home/marcosgatica/.config/dwmblocks/scripts/trayerControl.sh", NULL }; */
 
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     { MODKEY,                       XK_s,       togglesticky,   {0} },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-    { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = traycmd} },
+    /* { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = traycmd} }, */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_c,       spawn,          {.v = capturadorPantalla}},
-    { MODKEY,                       XK_t,       spawn,          {.v = temperaturasConRofi}},
+    /* { MODKEY,                       XK_t,       spawn,          {.v = temperaturasConRofi}}, */
 	{ MODKEY,                       XK_Right,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,      focusstack,     {.i = -1 } },
     { MODKEY,                       XK_w,       setlayout,      {.v = &layouts[1]}},
