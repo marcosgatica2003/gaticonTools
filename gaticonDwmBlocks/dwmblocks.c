@@ -116,15 +116,16 @@ void setupsignals()
 
 }
 
-#define MARGIN "^c#222222^-^d^"
+#define MARGIN "^c#fb4934^^d^"
 
 int getstatus(char *str, char *last)
 {
 	strcpy(last, str);
 	str[0] = '\0';
-	for (unsigned int i = 0; i < LENGTH(blocks); i++){
-		strcat(str, statusbar[i]);
-        if (i < LENGTH(blocks) - 1) { strcat(str, MARGIN); }
+	for (unsigned int i = 0; i < LENGTH(blocks); i++){	
+        strcat(str, statusbar[i]);
+        if (i < LENGTH(blocks) -1 && strlen(statusbar[i]) > 0)
+            strcat(str, MARGIN);
 	/* str[strlen(str)-strlen(delim)] = '\0'; */
     }
 	return strcmp(str, last);//0 if they are the same
