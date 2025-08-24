@@ -37,4 +37,11 @@ export nombreRutaGuardado
 
 maim -s --quality 10 | tee >(xclip -selection clipboard -t image/png) > "$nombreRutaGuardado"
 
-notify-send "Captura guardada!" "$nombreArchivo"
+pesoArchivo=$(du "$nombreRutaGuardado" | awk '{print $1}')
+
+if [[ "$pesoArchivo" -eq 0 ]]; then
+    notify-send --urgency=low "Captura cancelada!" "Se borrará '$nombreArchivo'"
+    rm "$nombreRutaGuardado"
+else
+    notify-send --urgency=normal "Captura guardada!" "$nombreArchivo"
+fi
