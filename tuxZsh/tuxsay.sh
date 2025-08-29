@@ -14,6 +14,7 @@ curiosidades=(
   "En Argentina hay más taringueros que vacas en el campo."
   "El kernel de Linux se usa en la mayoría de los cajeros automáticos del país."
   "En la UTN te dan mesa de examen antes de que tu PC termine de bootear."
+  "En la UTN hay paro antes de que tu miniBestia termine de bootear."
   "Un asado bien hecho requiere tanta precisión como un buen makefile."
   "El colectivo 60 es más impredecible que tu scheduler con deadlocks."
   "El Lunfardo es al español lo que Bash es a los lenguajes: puro poder oscuro."
