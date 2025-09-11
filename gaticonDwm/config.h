@@ -4,7 +4,7 @@
 
 /* appearance */
 /* #include <cstddef> */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -16,12 +16,12 @@ static int smartgaps = 0;
 static const char *fonts[]          = { "JetBrainsMono Nerd Font-10:bold" };
 
 static const char col_fg_norm[]     = "#928374"; 
-static const char col_bg_norm[]     = "#222222";
+static const char col_bg_norm[]     = "#000000";
 static const char col_border_norm[] = "#222222";
 
 static const char col_fg_sel[]      = "#ebdbb2";
 static const char col_bg_sel[]      = "#222222";
-static const char col_border_sel[]  = "#ebdbb2";
+static const char col_border_sel[]  = "#cc241d";
 
 static const char col_urgent[]      = "#f0c674";
 static const char col_black[]       = "#000000";
@@ -33,7 +33,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -61,7 +61,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
+	{ "",      monocle },
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
 	{ "",      deck },
@@ -80,6 +80,14 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define MODKEY_ALT Mod1Mask
+
+#define TAGKEYS_ALT(KEY,TAG) \
+	{ MODKEY_ALT,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY_ALT|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ MODKEY_ALT|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY_ALT|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -135,10 +143,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	/* TAGKEYS(                        XK_6,                      5) */
-	/* TAGKEYS(                        XK_7,                      6) */
-	/* TAGKEYS(                        XK_8,                      7) */
-	/* TAGKEYS(                        XK_9,                      8) */
+	TAGKEYS_ALT(                        XK_1,                      5)
+	TAGKEYS_ALT(                        XK_2,                      6)
+	TAGKEYS_ALT(                        XK_3,                      7)
+	TAGKEYS_ALT(                        XK_4,                      8)
 };
 
 /* button definitions */
