@@ -33,7 +33,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -80,13 +80,13 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define MODKEY_ALT Mod1Mask
+/* #define MODKEY_ALT Mod1Mask */
 
-#define TAGKEYS_ALT(KEY,TAG) \
-	{ MODKEY_ALT,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY_ALT|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY_ALT|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY_ALT|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+/* #define TAGKEYS_ALT(KEY,TAG) \ */
+/* 	{ MODKEY_ALT,                       KEY,      view,           {.ui = 1 << TAG} }, \ */
+/* 	{ MODKEY_ALT|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \ */
+/* 	{ MODKEY_ALT|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \ */
+/* 	{ MODKEY_ALT|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, */
 
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -143,10 +143,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS_ALT(                        XK_1,                      5)
-	TAGKEYS_ALT(                        XK_2,                      6)
-	TAGKEYS_ALT(                        XK_3,                      7)
-	TAGKEYS_ALT(                        XK_4,                      8)
+	/* TAGKEYS_ALT(                        XK_1,                      5) */
+	/* TAGKEYS_ALT(                        XK_2,                      6) */
+	/* TAGKEYS_ALT(                        XK_3,                      7) */
+	/* TAGKEYS_ALT(                        XK_4,                      8) */
 };
 
 /* button definitions */
