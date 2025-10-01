@@ -1,4 +1,5 @@
 /* See LICENSE for license details. */
+#include <bits/time.h>
 #include <errno.h>
 #include <math.h>
 #include <limits.h>
@@ -221,6 +222,12 @@ static DC dc;
 static XWindow xw;
 static XSelection xsel;
 static TermWindow win;
+static int cursorBlink = 1;
+static int cursorVisible = 1;
+static int cursorTimer = 0;
+static const int cursorBlinkInterval = 600;
+static double lastKeypress = 0;
+static const int cursorBlinkDelay = 1000;
 
 /* Font Ring Cache */
 enum {
@@ -254,6 +261,13 @@ static char *opt_name  = NULL;
 static char *opt_title = NULL;
 
 static uint buttons; /* bit field of pressed buttons */
+
+static double
+nowMs(void) {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return ts.tv_sec * 1000.0 + ts.tv_nsec / 1.0e6;
+}
 
 void
 clipcopy(const Arg *dummy)
@@ -1528,6 +1542,12 @@ xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og)
 {
 	Color drawcol;
 	XRenderColor colbg;
+    
+    if (IS_SET(MODE_HIDE))
+        return;
+
+    if (cursorBlink && !cursorVisible)
+        return;
 
 	/* remove the old cursor */
 	if (selected(ox, oy))
@@ -1863,6 +1883,9 @@ kpress(XEvent *ev)
 	Rune c;
 	Status status;
 	Shortcut *bp;
+    cursorVisible = 1;
+    cursorTimer = 0;
+    lastKeypress = nowMs();
 
 	if (IS_SET(MODE_KBDLOCK))
 		return;
@@ -1904,6 +1927,7 @@ kpress(XEvent *ev)
 		}
 	}
 	ttywrite(buf, len, 1);
+
 }
 
 void
@@ -1985,6 +2009,7 @@ run(void)
 
 		if (FD_ISSET(ttyfd, &rfd))
 			ttyread();
+        
 
 		xev = 0;
 		while (XPending(xw.dpy)) {
@@ -2020,7 +2045,12 @@ run(void)
 
 		/* idle detected or maxlatency exhausted -> draw */
 		timeout = -1;
-		if (blinktimeout && tattrset(ATTR_BLINK)) {
+
+        if (cursorBlink) {
+            timeout = cursorBlinkInterval;
+        }
+
+        if (blinktimeout && tattrset(ATTR_BLINK)) {
 			timeout = blinktimeout - TIMEDIFF(now, lastblink);
 			if (timeout <= 0) {
 				if (-timeout > blinktimeout) /* start visible */
@@ -2031,6 +2061,20 @@ run(void)
 				timeout = blinktimeout;
 			}
 		}
+
+        if (cursorBlink) {
+            cursorTimer += timeout;
+            double diff = nowMs() - lastKeypress;
+
+            if (diff < cursorBlinkDelay){ 
+                cursorTimer = 0;
+                cursorVisible = 1;
+            } else if (cursorTimer >= cursorBlinkInterval) {
+                cursorVisible = !cursorVisible;
+                cursorTimer = 0;
+                redraw();
+            }
+        }
 
 		draw();
 		XFlush(xw.dpy);

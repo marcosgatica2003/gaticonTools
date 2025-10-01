@@ -13,7 +13,7 @@ static const unsigned int gappiv =  8;
 static const unsigned int gappoh =  8;
 static const unsigned int gappov =  8;
 static int smartgaps = 0;
-static const char *fonts[]          = { "JetBrainsMono Nerd Font-10:bold" };
+static const char *fonts[]          = { "AcPlus IBM VGA 8x14:style=Regular" };
 
 static const char col_fg_norm[]     = "#928374"; 
 static const char col_bg_norm[]     = "#000000";
