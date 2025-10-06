@@ -4,7 +4,7 @@
 static int topbar = 0;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"JetBrainsMono Nerd Font:style=Bold:size=10"
+    "AcPlus IBM VGA 8x14:style=Regular:size=12"
 };
 static const char *prompt      = " ";      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
