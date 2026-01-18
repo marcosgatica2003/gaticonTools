@@ -20,7 +20,7 @@ static const unsigned int gappiv =  8;
 static const unsigned int gappoh =  8;
 static const unsigned int gappov =  8;
 static int smartgaps = 0;
-static const char *fonts[]          = { "JetBrainsMonoNerdFont:style=Regular:size=10" };
+static const char *fonts[]          = { "JetBrainsMonoNerdFont:style=Regular:size=9" };
 static const int refreshrate = 120;
 static const char col_fg_norm[]     = "#928374"; 
 static const char col_bg_norm[]     = "#222222";
@@ -60,7 +60,7 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-
+static const int decorhints  = 0;    /* 1 means respect decoration hints */
 #define FORCE_VSPLIT 1
 
 #include "vanitygaps.c"
