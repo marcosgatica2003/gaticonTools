@@ -545,9 +545,9 @@ cleanup(void)
 
 	for (i = 0; i < CurLast; i++)
 		drw_cur_free(drw, cursor[i]);
-	for (i = 0; i < LENGTH(colors) + 1; i++)
+	for (i = 0; i < LENGTH(colors) + 1; i++) {
 		drw_scm_free(drw, scheme[i], 3);
-	free(scheme);
+	    free(scheme); }
 	XDestroyWindow(dpy, wmcheckwin);
 	drw_free(drw);
 	XSync(dpy, False);
@@ -837,6 +837,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	short isCode = 0;
 	char *text;
 	char *p;
+    unsigned int stw = 0;
 
 	len = strlen(stext) + 1 ;
 	if (!(text = (char*) malloc(sizeof(char)*len)))
@@ -870,7 +871,10 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	text = p;
 
 	w += 2; /* 1px padding on both sides */
-	ret = x = m->ww - w;
+	
+    if (showsystray && m == systraytomon(m) && !systrayonleft)
+        stw = getsystraywidth();
+    ret = x = m->ww - w - stw;
 
 	drw_setscheme(drw, scheme[LENGTH(colors)]);
 	drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
@@ -956,8 +960,8 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		tw = m->ww - drawstatusbar(m, bh, stext);
-	    drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);
+	    /* drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0); */
+        tw = m->ww - drawstatusbar(m, bh, stext);
     }
 
     resizebarwin(m);
