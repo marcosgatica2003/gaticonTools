@@ -6,7 +6,7 @@
 #define TEMP_SENSOR "/run/hwmon-k10temp/temp1_input"
 #define PWM1 "/run/hwmon-dell/pwm1"
 #define PWM2 "/run/hwmon-dell/pwm2"
-#define SLEEP_US 500000
+#define SLEEP_US 100000
 
 typedef struct {
     float* temps;
@@ -86,7 +86,7 @@ float readTemp(void) {
 
 int calcPwm(float temp, float tMin, float tMax, int minPwm, int maxPwm) {
     if (temp <= tMin) return minPwm;
-    if (temp <= tMax) return maxPwm;
+    if (temp >= tMax) return maxPwm;
 
     float ratio = (temp - tMin) / (tMax - tMin);
     return (int)(minPwm + ratio * (maxPwm - minPwm));
