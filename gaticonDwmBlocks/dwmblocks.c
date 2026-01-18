@@ -34,7 +34,7 @@ void setupsignals();
 void sighandler(int signum);
 int getstatus(char *str, char *last);
 void statusloop();
-void termhandler();
+void termhandler(int unused);
 void pstdout();
 #ifndef NO_X
 void setroot();
@@ -116,7 +116,7 @@ void setupsignals()
 
 }
 
-#define MARGIN "^c#fb4934^^d^"
+#define MARGIN "^c#fb4934^ ^d^"
 
 int getstatus(char *str, char *last)
 {
@@ -190,7 +190,7 @@ void sighandler(int signum)
 	writestatus();
 }
 
-void termhandler()
+void termhandler(int unused)
 {
 	statusContinue = 0;
 }

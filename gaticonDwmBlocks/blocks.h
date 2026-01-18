@@ -1,6 +1,6 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-    {"",    "/home/marcosgatica/.config/dwmblocks/scripts/temp hwmon3",    5,  3},
+    {"",    "/home/marcosgatica/.config/dwmblocks/scripts/tctl.sh",    5,  3},
     {"",    "/home/marcosgatica/.config/dwmblocks/scripts/volume",  2,  1},
     {"",    "/home/marcosgatica/.config/dwmblocks/scripts/dist/internet/internet", 30,  2},
     {"",    "/home/marcosgatica/.config/dwmblocks/scripts/battery", 5, 3},
