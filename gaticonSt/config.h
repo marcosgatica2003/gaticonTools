@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "AcPlus IBM VGA 8x14:style=Regular:pixelsize=24";
+static char *font = "JetBrainsMono Nerd Font:style=Regular:pixelsize=24";
 static int borderpx = 0;
 
 /*
@@ -94,7 +94,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 static const char *colorname[] = {
     /* 8 normal colors */
-    [0] = "#000000",
+    [0] = "#222222",
     [1] = "#cc241d", /* red     */
     [2] = "#98971a", /* green   */
     [3] = "#d79921", /* yellow  */
