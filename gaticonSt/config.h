@@ -6,6 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "JetBrainsMono Nerd Font:style=Regular:pixelsize=24";
+static char *font2[] = { "Noto Color Emoji:pixelsize=14" };
 static int borderpx = 0;
 
 /*
