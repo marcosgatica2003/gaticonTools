@@ -1,0 +1,14 @@
+Gaticon Git Manager
+
+Objetivo: Rastrear el último tag de un repositorio a rastrear.
+
+Flujo para el usuario:
+    $ ggm --add-repository {enlace a git} {alias para el usuario} -> $ ggm checkdeps {alias} -> # apt install {deps} -> $ ggm build {alias} -> $ ggm install {alias}
+
+Lugar de trabajo:
+    $HOME/.config/ggm
+
+Archivos en ggm:
+    repositories.conf: {alias} {url de git en http}
+    buildD/{archivos donde se clonan los repositorios}
+
