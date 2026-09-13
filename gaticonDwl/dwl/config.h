@@ -6,7 +6,7 @@
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
 static const unsigned int monoclegaps       = 0;
-static const unsigned int borderpx         = 2;  /* border pixel of windows */
+static const unsigned int borderpx         = 3;  /* border pixel of windows */
 /* static const float rootcolor[]             = COLOR(0x222222ff); */
 /* static const float bordercolor[]           = COLOR(0x444444ff); */
 /* static const float focuscolor[]            = COLOR(0x005577ff); */
@@ -14,7 +14,7 @@ static const unsigned int borderpx         = 2;  /* border pixel of windows */
 
 static const int showbar    = 1;
 static const int topbar     = 1;
-static const char *fonts[]  =   {"Jetbrains Mono:size=10:style=Bold"};
+static const char *fonts[]  =   {"Jetbrains Mono:size=11:style=Bold"};
 static const float rootcolor[]  =   COLOR(0x000000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
@@ -45,8 +45,8 @@ static const Rule rules[] = {
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 
 /* monitors */
@@ -163,11 +163,11 @@ static const Key keys[] = {
 	/* { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_less,        tagmon,           {.i = WLR_DIRECTION_LEFT} }, */
 	/* { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_greater,     tagmon,           {.i = WLR_DIRECTION_RIGHT} }, */
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
-	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),
+	TAGKEYS(          XKB_KEY_2, XKB_KEY_quotedbl,                            1),
 	TAGKEYS(          XKB_KEY_3, XKB_KEY_numbersign,                    2),
 	TAGKEYS(          XKB_KEY_4, XKB_KEY_dollar,                        3),
 	TAGKEYS(          XKB_KEY_5, XKB_KEY_percent,                       4),
-	TAGKEYS(          XKB_KEY_6, XKB_KEY_asciicircum,                   5),
+	TAGKEYS(          XKB_KEY_6, XKB_KEY_ampersand,                     5),
 	/* TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                     6), */
 	/* TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                      7), */
 	/* TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                     8), */
