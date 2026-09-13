@@ -565,6 +565,11 @@ applyrules(Client *c)
 
 	c->isfloating |= client_is_float_type(c);
 	setmon(c, mon, newtags);
+
+    if (c->isfloating) {
+        c->geom.x = c->mon->m.x + (c->mon->m.width - c->geom.width) / 2;
+        c->geom.y = c->mon->m.y + (c->mon->m.height - c->geom.height) /2;
+    }
 }
 
 void
