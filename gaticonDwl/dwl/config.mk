@@ -33,4 +33,4 @@ XLIBS = xcb xcb-icccm
 # dwl itself only uses C99 features, but wlroots' headers use anonymous unions (C11).
 # To avoid warnings about them, we do not use -std=c99 and instead of using the
 # gmake default 'CC=c99', we use cc.
-CC = cc
+CC = cc -O2 -march=native
