@@ -20,9 +20,9 @@ static const float rootcolor[]  =   COLOR(0x000000ff);
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 
 static uint32_t colors[][3]     =   {
-    [SchemeNorm]    =   { 0xbbbbbbff,   0x222222ff, 0x444444ff },
-    [SchemeSel]     =   { 0xeeeeeeff,   0x005577ff, 0x005577ff },
-    [SchemeUrg]     =   { 0         ,   0         , 0x770000ff },
+    [SchemeNorm]    =   { 0x7c6f64ff,   0x222222ff, 0x3c3836ff },
+    [SchemeSel]     =   { 0xfabd2fff,   0x272727ff, 0xcc241dff },
+    [SchemeUrg]     =   { 0x000000ff,   0xd79921ff, 0xd79921ff },
 };
 
 static const int smartgaps                  = 0;
@@ -39,14 +39,16 @@ static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   monitor */
     {   "mpv",              NULL,       0,              1,          -1},
     {   "imv",              NULL,       0,              1,          -1},
+    /* {   "firefox",          "Picture-in-picture",   ~0,     1,      -1}, */
 };
 
 /* layout(s) */
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },
+    { "[D]",      deckMode },
 	{ "[M]",      monocle },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	/* { "><>",      NULL },    /1* no layout function means floating behavior *1/ */
 };
 
 /* monitors */
@@ -142,36 +144,25 @@ static const Key keys[] = {
     { MODKEY,                    XKB_KEY_c,           spawn,            {.v = screenshotGaticon} },
 	{ MODKEY,                    XKB_KEY_Right,           focusstack,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_Left,           focusstack,       {.i = -1} },
-	/* { MODKEY,                    XKB_KEY_i,           incnmaster,       {.i = +1} }, */
-	/* { MODKEY,                    XKB_KEY_d,           incnmaster,       {.i = -1} }, */
 	{ MODKEY,                    XKB_KEY_h,           setmfact,         {.f = -0.05f} },
 	{ MODKEY,                    XKB_KEY_l,           setmfact,         {.f = +0.05f} },
 	{ MODKEY,                    XKB_KEY_Return,      zoom,             {0} },
 	{ MODKEY,                    XKB_KEY_Tab,         view,             {0} },
-    { MODKEY,                    XKB_KEY_e,           setlayout,        {0} },
+    { MODKEY,                    XKB_KEY_e,           setlayout,        {.v = &layouts[0]} },
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_e,           setlayout,        {.v = &layouts[1]} },
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_w,           setlayout,        {.v = &layouts[2]} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,           killclient,       {0} },
-	/* { MODKEY,                    XKB_KEY_t,           setlayout,        {.v = &layouts[0]} }, */
-	/* { MODKEY,                    XKB_KEY_f,           setlayout,        {.v = &layouts[1]} }, */
-	/* { MODKEY,                    XKB_KEY_m,           setlayout,        {.v = &layouts[2]} }, */
 	{ MODKEY,                    XKB_KEY_space,       setlayout,        {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,       togglefloating,   {0} },
-	/* { MODKEY,                    XKB_KEY_e,           togglefullscreen, {0} }, */
 	{ MODKEY,                    XKB_KEY_0,           view,             {.ui = ~0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright,  tag,              {.ui = ~0} },
 	{ MODKEY,                    XKB_KEY_comma,       focusmon,         {.i = WLR_DIRECTION_LEFT} },
-	/* { MODKEY,                    XKB_KEY_period,      focusmon,         {.i = WLR_DIRECTION_RIGHT} }, */
-	/* { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_less,        tagmon,           {.i = WLR_DIRECTION_LEFT} }, */
-	/* { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_greater,     tagmon,           {.i = WLR_DIRECTION_RIGHT} }, */
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_quotedbl,                            1),
 	TAGKEYS(          XKB_KEY_3, XKB_KEY_numbersign,                    2),
 	TAGKEYS(          XKB_KEY_4, XKB_KEY_dollar,                        3),
 	TAGKEYS(          XKB_KEY_5, XKB_KEY_percent,                       4),
 	TAGKEYS(          XKB_KEY_6, XKB_KEY_ampersand,                     5),
-	/* TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                     6), */
-	/* TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                      7), */
-	/* TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                     8), */
-	/* { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,           quit,             {0} }, */
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
