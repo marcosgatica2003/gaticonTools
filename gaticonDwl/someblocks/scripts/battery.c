@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main() {
+int main(void) {
     FILE* archivoCapacidad;
     FILE* archivoEstado;
     unsigned int capacidad = 0;
@@ -19,7 +19,7 @@ int main() {
     fscanf(archivoCapacidad, "%d", &capacidad);
     fscanf(archivoEstado, "%31s", estado);
     fclose(archivoCapacidad); fclose(archivoEstado);
-    ( strcmp(estado, "Charging") == 0 ) ? printf(" CHAR %d%% \n",capacidad) : printf("BAT %d%%\n", capacidad);
+    ( strcmp(estado, "Charging") == 0 ) ? printf(" CHAR %d%% \n",capacidad) : printf("^fg(b8bb26) BAT %d%% ^fg()\n", capacidad);
 
 
     return 0;

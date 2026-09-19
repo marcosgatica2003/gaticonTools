@@ -2,25 +2,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
 #define MAX_BUF_SIZE 256
 
 int ejecutar(const char*, char*, size_t);
-int estaMuteado();
+int estaMuteado(void);
 void getVolumen(char*, size_t);
-void click(int);
+/* void click(int); */
 
 int main(void) {
     char volume[MAX_BUF_SIZE];
-    char* blockButton = getenv("BLOCK_BUTTON");
+    /* char* blockButton = getenv("BLOCK_BUTTON"); */
 
-    if (blockButton != NULL) { click(atoi(blockButton)); }
+    /* if (blockButton != NULL) { click(atoi(blockButton)); } */
     if (estaMuteado())
-        printf(" VOL OFF \n"); 
+        printf("^fg(fabd2f) VOL OFF ^fg()\n"); 
     else { 
         getVolumen(volume, MAX_BUF_SIZE); 
-        printf(" VOL %s \n", volume); 
+        printf("^fg(fabd2f) VOL %s ^fg()\n", volume); 
     }
 
     return 0;
@@ -64,19 +63,19 @@ void getVolumen(char* volume, size_t volumeSize) {
     }
 }
 
-void click(int button) {
-    switch (button) {
-        case 1:
-            system("pactl set-sink-mute @DEFAULT_SINK@ toggle");
-            break;
-        case 3:
-            system("GTK_THEME='Adwaita:dark' pavucontrol &");
-            break;
-        case 4:
-            system("pactl set-sink-volume @DEFAULT_SINK@ +5%");
-            break;
-        case 5:
-            system("pactl set-sink-volume @DEFAULT_SINK@ -5%");
-            break;
-    }
-}
+/* void click(int button) { */
+/*     switch (button) { */
+/*         case 1: */
+/*             system("pactl set-sink-mute @DEFAULT_SINK@ toggle"); */
+/*             break; */
+/*         case 3: */
+/*             system("GTK_THEME='Adwaita:dark' pavucontrol &"); */
+/*             break; */
+/*         case 4: */
+/*             system("pactl set-sink-volume @DEFAULT_SINK@ +5%"); */
+/*             break; */
+/*         case 5: */
+/*             system("pactl set-sink-volume @DEFAULT_SINK@ -5%"); */
+/*             break; */
+/*     } */
+/* } */

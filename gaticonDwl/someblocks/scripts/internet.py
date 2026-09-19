@@ -68,7 +68,7 @@ def main():
                 foundConnection = True
                 break
     if foundConnection:
-        print(netInfo)
+        print("^fg(83a598)" + netInfo + "^fg()")
 
 if __name__ == "__main__":
     main()

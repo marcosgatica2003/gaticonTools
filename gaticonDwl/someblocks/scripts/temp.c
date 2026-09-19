@@ -16,7 +16,7 @@ int main(void) {
     }
 
     fclose(fp);
-    printf(" +%d.%d C \n", temp/1000, (temp % 1000) / 100);
+    printf("^fg(fb4934) +%d.%d C ^fg()\n", temp/1000, (temp % 1000) / 100);
 
     return 0;
 }

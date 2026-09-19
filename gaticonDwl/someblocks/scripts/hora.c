@@ -7,7 +7,7 @@ int main(void) {
     int hora = tm_struct->tm_hour;
     int minutos = tm_struct->tm_min;
 
-    printf(" %02d:%02d \n", hora, minutos);
+    printf("^fg(ebdbb2) %02d:%02d ^fg()\n", hora, minutos);
     return 0;
 }
 
